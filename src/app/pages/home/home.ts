@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../service';
+import { Newscard } from '../../components/newscard/newscard';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [Newscard],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -20,9 +21,9 @@ export class Home implements OnInit {
 
   loadPage() {
     this.newsServices.getNews().subscribe((data: any) => {
-      console.log('Full API response:', data);
-      this.news = data.results; // ✅ Use 'results' from API
-      console.log('News:', this.news);
+      this.news = data.articles; // ✅ Use 'results' from API
+      console.log('news:', this.news);
+      // console.log(this.news);
     });
   }
 }

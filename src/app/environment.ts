@@ -1,4 +1,3 @@
 export const environment = {
-  newsDataApiKey: 'pub_ae6305c5ad644562960d0b84726611fa',
-  newsDataBaseUrl: 'https://newsdata.io/api/1/news',
+  newsDataApiKey: 'd95fe3f1d2cfebede2afa0159b867c11',
 };
