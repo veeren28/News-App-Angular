@@ -13,11 +13,23 @@
       />
 
       <!-- Profile Icon -->
-      <img
-        src="./img/profile.jpg"
-        alt="Profile"
-        class="w-10 h-10 rounded-full ml-4"
-      />
+      <div
+        class="w-max bg-gray-400 p-4 rounded-2xl flex flex-col jusrify-center"
+      >
+        <img
+          [src]=""
+          alt="Profile"
+          class="w-20 h-20 rounded-full ml-4"
+          (click)="profileSettings()"
+        />
+        <h1>Hi User</h1>
+        <div class="w-max rounded-md shadow bg-gray-500" *ngIf="profileClicked">
+          <ul class="p-2">
+            <li class="border-b-2">Settings</li>
+            <li>Logout</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <!-- Navigation Links -->

@@ -1,0 +1,15 @@
+<form #myForm="ngForm">
+  <!-- <h1>Login</h1> -->
+  <h1>UserName</h1>
+  <input
+    type="text"
+    required
+    ngModel
+    placeholder="Enter UserName"
+    name="userName"
+  />
+  Password
+  <input type="text" ngModel placeholder="Enter Password" name="Password" />
+  <button type="submit" [disabled]="myForm.invalid"></button>
+  <a href=""> create User</a>
+</form>
