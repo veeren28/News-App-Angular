@@ -1,15 +1,48 @@
-<form #myForm="ngForm">
-  <!-- <h1>Login</h1> -->
-  <h1>UserName</h1>
-  <input
-    type="text"
-    required
-    ngModel
-    placeholder="Enter UserName"
-    name="userName"
-  />
-  Password
-  <input type="text" ngModel placeholder="Enter Password" name="Password" />
-  <button type="submit" [disabled]="myForm.invalid"></button>
-  <a href=""> create User</a>
-</form>
+<div class="w-screen h-screen flex justify-center items-center bg-blue-400">
+  <div class="bg-white p-4 rounded-lg">
+    <form [formGroup]="loginForm" class="flex flex-col justify-center text-2xl">
+      <!-- <h1>Login</h1> -->
+      <h1>UserName</h1>
+      <input
+        type="text"
+        placeholder="Enter UserName"
+        name="userName"
+        class="w-[50vh] border-gray-400 border-2 outline-0 rounded-md placeholder:font-light pl-2 placeholder:text-gray-400 py-2 my-2"
+        formControlName="username"
+      />
+      <div
+        *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
+        class="font-light text-red-400"
+      >
+        Username is required
+      </div>
+      Password
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="Password"
+        class="w-[50vh] border-gray-400 border-2 outline-0 rounded-md placeholder:font-light pl-2 placeholder:text-gray-400 py-2 my-2"
+        formControlName="password"
+      />
+      <div
+        *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+        class="font-light text-red-400"
+      >
+        Password is required
+      </div>
+      <button
+        type="submit"
+        [disabled]="loginForm.invalid"
+        [ngClass]="{'bg-gray-400 cursor-not-allowed hover:bg-gray-400':loginForm.invalid,
+        'bg-blue-400 cursor-pointer':loginForm.valid}"
+        class="bg-blue-400 w-max p-3 rounded-lg self-center px-10 -translate-x-2 cursor-pointer transition-all hover:bg-blue-500 hover:delay-200"
+      >
+        submit
+      </button>
+      <div class="flex flex-row self-center p-2 text-gray-500">
+        <h2 class="">New User?</h2>
+        <a href="" class="underline text-blue-500">Register</a>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="w-screen h-screen flex justify-center items-center bg-blue-400">
+  <div class="bg-white p-4 rounded-lg">
+    <form
+      [formGroup]="registrationForm"
+      class="flex flex-col justify-center text-2xl"
+    >
+      <!-- <h1>Login</h1> -->
+      <h1>Name</h1>
+      <input
+        type="text"
+        placeholder="Enter name"
+        class="w-[50vh] border-gray-400 border-2 outline-0 rounded-md placeholder:font-light pl-2 placeholder:text-gray-400 py-2 my-2"
+        formControlName="name"
+      />
+      <div
+        *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched"
+        class="font-light text-red-400"
+      >
+        Name is required
+      </div>
+      <h1>Phone Number</h1>
+      <input
+        type="text"
+        placeholder="Enter Phone Number"
+        class="w-[50vh] border-gray-400 border-2 outline-0 rounded-md placeholder:font-light pl-2 placeholder:text-gray-400 py-2 my-2"
+        formControlName="phno"
+      />
+      <div
+        *ngIf="registrationForm.get('phno')?.invalid && registrationForm.get('phno')?.touched"
+        class="font-light text-red-400"
+      >
+        phone number is required
+      </div>
+      <h1>Email</h1>
+      <input
+        type="text"
+        placeholder="Enter Email"
+        name="email"
+        class="w-[50vh] border-gray-400 border-2 outline-0 rounded-md placeholder:font-light pl-2 placeholder:text-gray-400 py-2 my-2"
+        formControlName="email"
+      />
+      <div
+        *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched"
+        class="font-light text-red-400"
+      >
+        Username is required
+      </div>
+      <h1>UserName</h1>
+      <input
+        type="text"
+        placeholder="Enter UserName"
+        name="userName"
+        class="w-[50vh] border-gray-400 border-2 outline-0 rounded-md placeholder:font-light pl-2 placeholder:text-gray-400 py-2 my-2"
+        formControlName="username"
+      />
+      <div
+        *ngIf="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched"
+        class="font-light text-red-400"
+      >
+        Username is required
+      </div>
+      Password
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="Password"
+        class="w-[50vh] border-gray-400 border-2 outline-0 rounded-md placeholder:font-light pl-2 placeholder:text-gray-400 py-2 my-2"
+        formControlName="password"
+      />
+      <div
+        *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched"
+        class="font-light text-red-400"
+      >
+        Password is required
+      </div>
+      <button
+        type="submit"
+        [disabled]="registrationForm.invalid"
+        [ngClass]="{'bg-gray-400 cursor-not-allowed hover:bg-gray-400':registrationForm.invalid,
+        'bg-blue-400 cursor-pointer':registrationForm.valid}"
+        class="bg-blue-400 w-max p-3 rounded-lg self-center px-10 -translate-x-2 cursor-pointer transition-all hover:bg-blue-500 hover:delay-200"
+      >
+        submit
+      </button>
+      <div class="flex flex-row self-center p-2 text-gray-500">
+        <h2 class="">Existing User?</h2>
+        <a href="" class="underline text-blue-500">Login</a>
+      </div>
+    </form>
+  </div>
+</div>
