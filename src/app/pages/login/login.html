@@ -1,6 +1,10 @@
 <div class="w-screen h-screen flex justify-center items-center bg-blue-400">
   <div class="bg-white p-4 rounded-lg">
-    <form [formGroup]="loginForm" class="flex flex-col justify-center text-2xl">
+    <form
+      [formGroup]="loginForm"
+      class="flex flex-col justify-center text-2xl"
+      (ngSubmit)="OnSubmit()"
+    >
       <!-- <h1>Login</h1> -->
       <h1>UserName</h1>
       <input
@@ -33,7 +37,8 @@
       <button
         type="submit"
         [disabled]="loginForm.invalid"
-        [ngClass]="{'bg-gray-400 cursor-not-allowed hover:bg-gray-400':loginForm.invalid,
+        [ngClass]="{'bg-gray-400 cursor-not-allowed':loginForm.invalid, 
+        'hover:bg-gray-400':loginForm.invalid,
         'bg-blue-400 cursor-pointer':loginForm.valid}"
         class="bg-blue-400 w-max p-3 rounded-lg self-center px-10 -translate-x-2 cursor-pointer transition-all hover:bg-blue-500 hover:delay-200"
       >
@@ -41,7 +46,9 @@
       </button>
       <div class="flex flex-row self-center p-2 text-gray-500">
         <h2 class="">New User?</h2>
-        <a href="" class="underline text-blue-500">Register</a>
+        <a class="underline text-blue-500" (onClick)="registerFunc()"
+          >Register</a
+        >
       </div>
     </form>
   </div>
