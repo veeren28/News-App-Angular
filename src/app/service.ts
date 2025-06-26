@@ -25,4 +25,9 @@ export class NewsService {
       'https://gnews.io/api/v4/top-headlines?lang=en&topic=business&token=d95fe3f1d2cfebede2afa0159b867c11';
     return this.http.get(this.baseurl);
   }
+  getTechnology() {
+    this.baseurl =
+      'https://gnews.io/api/v4/top-headlines?lang=en&topic=technology&token=d95fe3f1d2cfebede2afa0159b867c11';
+    return this.http.get(this.baseurl);
+  }
 }

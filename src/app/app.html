@@ -1,9 +1,4 @@
-@if(loggedIn!=true) {<app-login
-  (loginsuccess)="Handle($event)"
-  (registerClicked)="HandleRegister($event)"
-></app-login
->}
-<!-- @if(registerClicked==true){
-<app-registration-page></app-registration-page>
-} >}  -->
-@if(loggedIn){ <app-navbar></app-navbar> --> <router-outlet> </router-outlet> }
+<app-navbar></app-navbar>
+<!-- <div class="flex-1 bg-gray-800"> -->
+<router-outlet class="flex-1 bg-gray-800"> </router-outlet>
+<!-- </div> -->

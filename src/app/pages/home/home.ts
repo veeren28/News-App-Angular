@@ -23,7 +23,7 @@ export class Home implements OnInit {
     this.newsServices.getNews().subscribe((data: any) => {
       this.news = data.articles; // ✅ Use 'results' from API
       console.log('news:', this.news);
-      // console.log(this.news);
+      console.log(this.news);
     });
   }
 }
