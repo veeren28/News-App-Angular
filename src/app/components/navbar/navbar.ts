@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NewsService } from '../../service';
+import { Title } from '@angular/platform-browser';
 
 // CommonModule
 @Component({
@@ -41,11 +42,8 @@ export class Navbar {
     this.searchOn = true;
 
     this.filtered = this.news.filter((item: any) => {
-      if (item.title?.substirng(0, 10).toLowerCase().includes(term)) {
-        return item.title?.toLowerCase().substirng(0, 10).includes(term);
-      } else {
-        return (item.title = 'not Found');
-      }
+      let title = item.title?.substring(0, 10).toLowerCase() || '';
+      return title.includes(term);
     });
 
     console.log(this.filtered);
