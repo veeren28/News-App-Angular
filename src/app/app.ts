@@ -27,6 +27,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./app.css'], // ✅ Note: It's `styleUrls`, not `styleUrl`
 })
 export class App {
+  nightMode = false;
+
   protected title = 'news';
   loggedIn!: boolean;
   registerClicked: boolean = false;

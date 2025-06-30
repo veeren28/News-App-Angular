@@ -7,8 +7,6 @@ import { Login } from './pages/login/login';
 import { Technology } from './pages/technology/technology';
 
 export const routes: Routes = [
-  { path: 'registrationForm', component: RegistrationPage },
-  { path: 'login', component: Login },
   { path: '', component: Home },
   { path: 'home', component: Home },
   { path: 'sports', component: Sports },
