@@ -1,74 +1,108 @@
 <nav class="w-screen bg-gray-800 text-white shadow-lg">
-  <div class="max-w-7xl mx-auto flex flex-col">
-    <!-- Top Bar -->
-    <div class="flex flex-row items-center w-full p-4">
-      <!-- Logo -->
-      <h1 class="text-4xl font-bold text-white">NewsNow</h1>
+  <div
+    class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between p-4 gap-4"
+  >
+    <!-- Logo + Mobile Menu Button -->
+    <div class="flex justify-between w-full md:w-auto items-center">
+      <h1 class="text-3xl font-bold text-white">NewsNow</h1>
 
-      <!-- Search Bar -->
-      <div class="w-full max-w-md relative">
-        <input
-          type="text"
-          class="rounded-lg outline-none bg-gray-700 text-white placeholder-gray-400 w-full px-4 py-2"
-          placeholder="sports, movies, politics..."
-          [(ngModel)]="search"
-          (input)="SearchToggle()"
-        />
-
-        @if (searchOn) {
-        <div
-          class="absolute w-full bg-gray-700 rounded-lg px-4 pt-2 z-10 max-h-[300px] overflow-y-auto shadow-xl"
-        >
-          @for (m of filtered; track m) {
-          <div
-            class="flex flex-row mb-2 bg-gray-800 hover:bg-gray-700 transition"
-          >
-            <div class="flex flex-row p-2">
-              <img [src]="m.image" alt="" class="w-[20vh] p-2 rounded-xl" />
-              <h1
-                class="text-lg font-semibold flex items-center pl-2 text-white"
-              >
-                {{ m.title }}
-              </h1>
-            </div>
-          </div>
-          }
-        </div>
-        }
-      </div>
+      <!-- Hamburger Icon -->
+      <button class="md:hidden text-white text-3xl" (click)="toggleMenu()">
+        ☰
+      </button>
     </div>
 
-    <!-- Navigation Links -->
-    <ul class="flex justify-center w-full gap-8 px-2 py-2 mb-5">
-      <li>
-        <a
-          class="text-2xl px-4 py-2 rounded-lg hover:bg-gray-700 transition"
-          routerLink="/home"
-          >Home</a
+    <!-- Search Bar -->
+    <div class="w-full flex md:max-w-2xl md:ml-30 md:mx-auto relative">
+      <input
+        type="text"
+        class="rounded-lg outline-none bg-gray-700 text-white placeholder-gray-400 w-full px-4 py-2"
+        placeholder="sports, movies, politics..."
+        [(ngModel)]="search"
+        (input)="SearchToggle()"
+      />
+
+      <!-- Search Suggestions -->
+      <div
+        *ngIf="searchOn"
+        class="absolute w-full bg-gray-700 rounded-lg px-4 pt-2 z-10 max-h-[300px] overflow-y-auto shadow-xl"
+      >
+        <div
+          *ngFor="let m of filtered; trackBy: trackByFn"
+          class="flex flex-row mb-2 bg-gray-800 hover:bg-gray-700 transition"
         >
-      </li>
-      <li>
-        <a
-          class="text-2xl px-4 py-2 rounded-lg hover:bg-gray-700 transition"
-          routerLink="/business"
-          >Business</a
-        >
-      </li>
-      <li>
-        <a
-          class="text-2xl px-4 py-2 rounded-lg hover:bg-gray-700 transition"
-          routerLink="/sports"
-          >Sports</a
-        >
-      </li>
-      <li>
-        <a
-          class="text-2xl px-4 py-2 rounded-lg hover:bg-gray-700 transition"
-          routerLink="/technology"
-        >
-          Technology
-        </a>
-      </li>
-    </ul>
+          <div class="flex flex-row p-2">
+            <img [src]="m.image" alt="" class="w-[20vh] p-2 rounded-xl" />
+            <h1 class="text-lg font-semibold flex items-center pl-2 text-white">
+              {{ m.title }}
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Desktop Nav Links -->
+  <ul class="hidden md:flex justify-center w-full gap-8 px-2 py-4 mb-5">
+    <li>
+      <a
+        class="text-2xl px-4 py-2 rounded-lg hover:bg-gray-700 transition"
+        routerLink="/home"
+        >Home</a
+      >
+    </li>
+    <li>
+      <a
+        class="text-2xl px-4 py-2 rounded-lg hover:bg-gray-700 transition"
+        routerLink="/business"
+        >Business</a
+      >
+    </li>
+    <li>
+      <a
+        class="text-2xl px-4 py-2 rounded-lg hover:bg-gray-700 transition"
+        routerLink="/sports"
+        >Sports</a
+      >
+    </li>
+    <li>
+      <a
+        class="text-2xl px-4 py-2 rounded-lg hover:bg-gray-700 transition"
+        routerLink="/technology"
+        >Technology</a
+      >
+    </li>
+  </ul>
+
+  <!-- Mobile Nav Links -->
+  <ul *ngIf="menuOpen" class="md:hidden flex flex-col w-full px-4 pb-4 gap-3">
+    <li>
+      <a
+        class="text-xl py-2 px-2 rounded hover:bg-gray-700 transition"
+        routerLink="/home"
+        >Home</a
+      >
+    </li>
+    <li>
+      <a
+        class="text-xl py-2 px-2 rounded hover:bg-gray-700 transition"
+        routerLink="/business"
+        >Business</a
+      >
+    </li>
+    <li>
+      <a
+        class="text-xl py-2 px-2 rounded hover:bg-gray-700 transition"
+        routerLink="/sports"
+        >Sports</a
+      >
+    </li>
+    <li>
+      <a
+        class="text-xl py-2 px-2 rounded hover:bg-gray-700 transition"
+        routerLink="/technology"
+        >Technology</a
+      >
+    </li>
+  </ul>
 </nav>
